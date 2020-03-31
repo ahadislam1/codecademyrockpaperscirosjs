@@ -115,4 +115,28 @@ const getRoundWinner = number => {
   }
 }
 
-function getGameWinner() { }
+const getGameWinner = () => {
+  let playerOne = 0
+  let playerTwo = 0
+
+
+  for (let n = 1; n < 4; n++) {
+    if (getRoundWinner(n) === null) {
+      return null
+    } else if (getRoundWinner(n) === 'Player One') {
+      playerOne++
+    } else if (getRoundWinner(n) === 'Player Two') {
+      playerTwo++
+    }
+  }
+
+  if (playerOne > playerTwo) {
+    return 'Player One'
+  } else if (playerOne < playerTwo) {
+    return 'Player Two'
+  } else {
+    return 'Tie'
+  }
+}
+
+
