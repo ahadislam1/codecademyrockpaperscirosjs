@@ -140,3 +140,17 @@ const getGameWinner = () => {
 }
 
 
+const setComputerMoves = () => {
+  let moves = ['rock', 'scissors', 'paper']
+  const oneValue = Math.floor(Math.random() * 97) + 1
+  const twoValue = Math.floor(Math.random() * (98 - oneValue)) + 1
+  const threeValue = 99 - oneValue - twoValue
+  playerTwoMoveOneType = moves[Math.floor(Math.random() * moves.length)]
+  playerTwoMoveTwoType = moves[Math.floor(Math.random() * moves.length)]
+  playerTwoMoveThreeType = moves[Math.floor(Math.random() * moves.length)]
+
+  playerTwoMoveOneValue = oneValue
+  playerTwoMoveTwoValue = twoValue
+  playerTwoMoveThreeValue = threeValue
+
+}
