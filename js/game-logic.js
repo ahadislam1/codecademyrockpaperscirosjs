@@ -40,13 +40,13 @@ function setPlayerMoves(
     let sum = 0
 
     for (value of values) {
-      if (value < 1 || value > 99 ) {
+      if (value < 1 || value > 99) {
         return false
       }
       sum += value
     }
 
-    if (sum > 99 ){
+    if (sum > 99) {
       return false
     }
 
@@ -79,6 +79,40 @@ function setPlayerMoves(
   }
 }
 
-function getRoundWinner() { }
+function checkMove(moveOne, moveOneValue, moveTwo, moveTwoValue) {
+  let x = [moveOne, moveOneValue, moveTwo, moveTwoValue]
+
+  if (!x.includes(undefined)) {
+    if ((moveOne === 'rock' && moveTwo === 'scissors') ||
+      (moveOne === 'scissors' && moveTwo === 'paper') ||
+      (moveOne === 'paper' && moveTwo === 'rock')) {
+      return 'Player One'
+    } else if (moveOne === moveTwo) {
+      if (moveOneValue > moveTwoValue) {
+        return 'Player One'
+      } else if (moveOneValue === moveTwoValue) {
+        return 'Tie'
+      } else {
+        return 'Player Two'
+      }
+    } else {
+      return 'Player Two'
+    }
+  } else {
+    return null
+  }
+}
+
+const getRoundWinner = number => {
+  if (number === 1) {
+    return checkMove(playerOneMoveOneType, playerOneMoveOneValue, playerTwoMoveOneType, playerTwoMoveOneValue)
+  } else if (number === 2) {
+    return checkMove(playerOneMoveTwoType, playerOneMoveTwoValue, playerTwoMoveTwoType, playerTwoMoveTwoValue)
+  } else if (number === 3) {
+    return checkMove(playerOneMoveThreeType, playerOneMoveThreeValue, playerTwoMoveThreeType, playerTwoMoveThreeValue)
+  } else {
+    return null
+  }
+}
 
 function getGameWinner() { }
